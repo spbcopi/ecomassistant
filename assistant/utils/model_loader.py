@@ -6,8 +6,8 @@ from assistant.utils.config_loader import load_config
 from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
 from langchain_groq import ChatGroq
 from assistant.logger import GLOBAL_LOGGER as log
-from assistant.exception.custom_exception import ProductAssistantException
-from api_key_manager import ApiKeyMgr
+from assistant.exception.custom_exception import AssistantException
+from assistant.utils.api_key_manager import ApiKeyMgr
 from langchain.chat_models import ChatOpenAI
 
 class ModelLoader:
@@ -44,7 +44,7 @@ class ModelLoader:
             )
         except Exception as e:
             log.error("Failed to get embedding model config", error=str(e))
-            raise ProductAssistantException("Invalid embedding model config", sys)
+            raise AssistantException("Invalid embedding model config", sys)
         
     def load_llm(self):
         """

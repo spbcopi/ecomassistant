@@ -50,16 +50,3 @@ class AssistantException(Exception):
     def __repr__(self):
         return f"DocumentPortalException(file={self.file_name!r}, line={self.lineno}, message={self.error_message!r})"
 
-
-# if __name__ == "__main__":
-#     # Demo-1: generic exception -> wrap
-#     try:
-#         a = 1 / 0
-#     except Exception as e:
-#         raise DocumentPortalException("Division failed", e) from e
-
-#     # Demo-2: still supports sys (old pattern)
-#     # try:
-#     #     a = int("abc")
-#     # except Exception as e:
-#     #     raise DocumentPortalException(e, sys)
